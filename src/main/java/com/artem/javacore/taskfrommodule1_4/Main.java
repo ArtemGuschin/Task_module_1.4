@@ -45,5 +45,13 @@ public class Main {
         a.start();
         b.start();
         c.start();
+
+        try {
+            a.join();
+            b.join();
+            c.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
