@@ -1,11 +1,8 @@
 package com.artem.javacore.taskfrommodule1_4;
 
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-
 public class Main {
-    public static void main(String[] args) {
-        Foo foo = new Foo();
+    public static void main(String[] args)  {
+        FooReent foo = new FooReent();
         Thread a = new Thread(() -> foo.first(() -> {
             try {
                 Thread.sleep(500);
@@ -31,6 +28,7 @@ public class Main {
         b.start();
         c.start();
 
+
         try {
             a.join();
             b.join();
@@ -38,5 +36,6 @@ public class Main {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
