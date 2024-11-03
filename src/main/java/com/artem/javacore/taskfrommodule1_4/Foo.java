@@ -11,8 +11,8 @@ public class Foo {
     public void first(Runnable r) {
         lock.lock();
         try {
-            r.run();
             System.out.println("First");
+            r.run();
             firstMethodCalled.signal();
         } finally {
             lock.unlock();
@@ -24,8 +24,8 @@ public class Foo {
         lock.lock();
         try {
             firstMethodCalled.await();
-            r.run();
             System.out.println("second");
+            r.run();
             secondMethodCalled.signal();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -39,8 +39,8 @@ public class Foo {
         lock.lock();
         try {
             secondMethodCalled.await();
-            r.run();
             System.out.println("third");
+            r.run();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } finally {
